@@ -31,13 +31,13 @@
 	</bean>
 	
 	<!-- 运行任务 -->
-	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean" lazy-init="false">
-		<property name="triggers">
-			<list>
-				<ref bean="test3"/>
-			</list>
-		</property>
-	</bean>
+	<!--<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean" lazy-init="false">-->
+		<!--<property name="triggers">-->
+			<!--<list>-->
+				<!--<ref bean="test3"/>-->
+			<!--</list>-->
+		<!--</property>-->
+	<!--</bean>-->
 	
 	
 	

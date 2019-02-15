@@ -16,18 +16,21 @@ public class SupplierAction extends BaseAction implements ModelDriven<Supplier>{
 	
 	private List<Supplier>suppliers;
 	
-	public String list() throws Exception {
+	@Override
+    public String list() throws Exception {
 		suppliers=service.findListByCriteriaMap(null);
 		return super.list();
 	}
 
 	
+	@Override
 	public String query() throws Exception {
 		suppliers=service.findListByCriteriaMap(popToMap(supplier));
 		return super.query();
 	}
 
 	
+	@Override
 	public String addOrUpdateUI() throws Exception {
 		if(supplier.getSupplier_id()!=null){
 			//修改

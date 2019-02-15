@@ -26,23 +26,26 @@ public class PrivilegeListener implements ServletContextListener {
 
 	@Override
 	public void contextInitialized(ServletContextEvent event) {
-		//通过WebApplicationContext获取bean
-		WebApplicationContext ctx=WebApplicationContextUtils.getWebApplicationContext(event.getServletContext());
-		ResourceServiceInter service=(ResourceServiceInter) ctx.getBean("resourceService");
-		
-		//获取所有权限资源
-		List<Resource> res=service.findListByCriteriaMap(null);
-		
-		//提高比较查询效率，将所有资源拼成字符串
-		StringBuilder sb=new StringBuilder();
-		for(Resource r:res){
-			sb.append(r.getPath());
-			sb.append("#");//以#分割
+		try {
+			//通过WebApplicationContext获取bean
+			WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(event.getServletContext());
+			ResourceServiceInter service = (ResourceServiceInter) ctx.getBean("resourceService");
+
+			//获取所有权限资源
+			List<Resource> res = service.findListByCriteriaMap(null);
+
+			//提高比较查询效率，将所有资源拼成字符串
+			StringBuilder sb = new StringBuilder();
+			for (Resource r : res) {
+				sb.append(r.getPath());
+				sb.append("#");//以#分割
+			}
+
+			//将字符串存到servletContext中
+			event.getServletContext().setAttribute("resAll", sb);
+		}catch (Exception e){
+
 		}
-		
-		//将字符串存到servletContext中
-		event.getServletContext().setAttribute("resAll", sb);
-		
 	}
 
 }

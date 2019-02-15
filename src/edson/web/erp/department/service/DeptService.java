@@ -1,24 +1,12 @@
 package edson.web.erp.department.service;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-
-import org.aspectj.weaver.ast.And;
-import org.hibernate.Criteria;
-
-import com.opensymphony.xwork2.inject.util.Strings;
-import com.sun.org.apache.commons.beanutils.converters.StringArrayConverter;
-
 import edson.web.erp.department.dao.DeptDaoInter;
 import edson.web.erp.department.domain.Department;
 import edson.web.erp.utils.base.EqHqlParamters;
 import edson.web.erp.utils.publicBean.PageBean;
+
+import java.util.List;
+import java.util.Map;
 
 public class DeptService implements DeptServiceInter {
 	
@@ -28,10 +16,12 @@ public class DeptService implements DeptServiceInter {
 		this.dao = dao;
 	}
 
+	@Override
 	public void save(Department dept) {
 		dao.save(dept);
 	}
 
+	@Override
 	public PageBean<Department> findListByPageBean(Integer currentPage) {
 		//查询总记录数
 		String hql="select count(*) from Department";
@@ -44,6 +34,7 @@ public class DeptService implements DeptServiceInter {
 		return pageBean;
 	}
 
+	@Override
 	public Department findById(Integer id) {
 		return dao.findById(id);
 	}

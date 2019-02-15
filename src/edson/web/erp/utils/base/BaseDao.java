@@ -24,16 +24,19 @@ public abstract class BaseDao<T> extends HibernateDaoSupport implements BaseDaoI
 		entityClass=(Class) types[0];
 	}
 
+	@Override
 	public void save(T t) {
 		this.getHibernateTemplate().save(t);		
 	}
 
+	@Override
 	public T findById(Serializable id) {
 		DetachedCriteria dc=DetachedCriteria.forClass(entityClass);
 		dc.add(Restrictions.eq("id", id));
 		return (T) this.getHibernateTemplate().findByCriteria(dc).get(0);
 	}
 	
+	@Override
 	public T findByCriteriaMap(Map<String,Object> criteriaMap){
 		DetachedCriteria dc=DetachedCriteria.forClass(entityClass);
 		if(criteriaMap!=null && criteriaMap.size()>0){
@@ -45,6 +48,7 @@ public abstract class BaseDao<T> extends HibernateDaoSupport implements BaseDaoI
 		return  temp.size()>0?(T)temp.get(0):null;
 	}
 	
+	@Override
 	public List<T> findListByNotCriteriaMap(Map<String,Object> criteriaMap){
 		DetachedCriteria dc=DetachedCriteria.forClass(entityClass);
 		if(criteriaMap!=null && criteriaMap.size()>0){
@@ -56,6 +60,7 @@ public abstract class BaseDao<T> extends HibernateDaoSupport implements BaseDaoI
 		return  temp.size()>0?temp:null;
 	}
 	
+	@Override
 	public List<T> findListByCriteriaMap(Map<String,Object> criteriaMap){
 		DetachedCriteria dc=DetachedCriteria.forClass(entityClass);
 		if(criteriaMap!=null && criteriaMap.size()>0){
@@ -67,15 +72,18 @@ public abstract class BaseDao<T> extends HibernateDaoSupport implements BaseDaoI
 		return  temp.size()>0?temp:null;
 	}
 
+	@Override
 	public void update(T t) {
 		this.getHibernateTemplate().update(t);
 	}
 
+	@Override
 	public void delete(T t) {
 		this.getHibernateTemplate().delete(t);
 	}
 	
-	public long findTotalRecord(String hql,Object[] params) {
+	@Override
+	public long findTotalRecord(String hql, Object[] params) {
 		if(params!=null && params.length>0){
 			return (long)this.getHibernateTemplate().find(hql, params).get(0);
 		}
@@ -83,6 +91,7 @@ public abstract class BaseDao<T> extends HibernateDaoSupport implements BaseDaoI
 		return (long) this.getHibernateTemplate().find(hql).get(0);
 	}
 	
+	@Override
 	public PageBean<T> findListByPageBean(
 			PageBean<T> pageBean,int currentPage, int totalRecord,int one_page_record,String path,String hql,Object[] params) {
 		List<T> temp=this.getHibernateTemplate().executeFind(new PageHibernateCallback<T>(hql, params, (currentPage-1)*one_page_record,one_page_record));

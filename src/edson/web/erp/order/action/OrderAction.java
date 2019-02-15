@@ -83,7 +83,8 @@ public class OrderAction extends BaseAction implements ModelDriven<Order>{
 //##########################################################################################
 	//action请求
 	
-	public String list() throws Exception {
+	@Override
+    public String list() throws Exception {
 		//查询所有采购订单
 		criteriaMap.clear();
 		criteriaMap.put("orderType", Order.ORDER_TYPE_OF_BUY);
@@ -122,6 +123,7 @@ public class OrderAction extends BaseAction implements ModelDriven<Order>{
 	
 	
 	
+	@Override
 	public String query() throws Exception {
 		
 		String createTime1=getParamter("createTime1");

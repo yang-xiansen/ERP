@@ -30,7 +30,8 @@ public class RoleAction extends BaseAction implements ModelDriven<Role>{
 	private List<Object>menu_ids=new ArrayList<Object>();//角色拥有的资源的id
 	private List<Menu>menuAll;
 	
-	public String list() throws Exception {
+	@Override
+    public String list() throws Exception {
 		
 		roles=service.findListByCriteriaMap(null);
 		

@@ -52,7 +52,8 @@ public class Employee {
 	private String birthday;
 	
 	private String loginTime;//登录时间
-	private String loginIP;//登录的IP地点
+	private String loginIP;
+	//登录的IP地点
 	private Integer loginTimes;//登录次数
 	
 	private Department dept;

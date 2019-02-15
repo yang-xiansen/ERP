@@ -89,6 +89,7 @@ public class EmpAction extends BaseAction implements ModelDriven<Employee>{
 		return super.list();
 	}
 	
+	@Override
 	public String query() throws Exception{
 		//查询
 		if(emp.getDept().getDid()==null){

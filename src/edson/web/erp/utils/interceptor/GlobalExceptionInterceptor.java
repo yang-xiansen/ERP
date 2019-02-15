@@ -1,10 +1,8 @@
 package edson.web.erp.utils.interceptor;
 
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
-
 import edson.web.erp.utils.exception.PrivilegeException;
 
 /**

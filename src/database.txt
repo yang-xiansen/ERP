@@ -15,7 +15,8 @@
 		resource_id int primary key,
 		name varchar(60),
 		path varchar(120),
-		is_operation int
+		is_operation int,
+		is_action int
 	)charset utf8 collate utf8_general_ci;
 	
 	create table role_resource(

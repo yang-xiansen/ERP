@@ -16,16 +16,19 @@ public class ResourceAction extends BaseAction implements ModelDriven<Resource>{
 	
 	
 	
-	public String list() throws Exception {
+	@Override
+    public String list() throws Exception {
 		resources=service.findListByCriteriaMap(null);
 		return super.list();
 	}
 	
+	@Override
 	public String query() throws Exception {
 		resources=service.findListByCriteriaMap(popToMap(resource));
 		return super.query();
 	}
 	
+	@Override
 	public String addOrUpdateUI() throws Exception {
 		if(resource.getResource_id()!=null){
 			resource=service.findById(resource.getResource_id());
